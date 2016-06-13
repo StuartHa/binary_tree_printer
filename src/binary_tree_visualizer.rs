@@ -1,8 +1,6 @@
-pub struct Node<'a> {
-  pub left: Option<&'a Node<'a>>,
-  pub right: Option<&'a Node<'a>>,
-  pub value: char
-}
+pub mod node;
+
+use node::Node;
 
 // Compute the depth of a tree. The minimum depth is 1 for a single-node tree.
 fn depth(node: &Node) -> u32 {
@@ -40,10 +38,13 @@ fn print_tree_rec(node: &Node, level: usize, pos: usize, arr: &mut Vec<Vec<char>
 
 pub fn print_tree(root: &Node) {
   let tree_depth = depth(&root);
-  // Data grid needs to be tree_depth*(tree_depth + 1)/2 rows, and
-  // 2^tree_depth - 1 columns.
-  let mut data = vec![vec![' '; ((2 as i32).pow(tree_depth) - 1) as usize ]; (tree_depth*(tree_depth+1)/2) as usize];
+  // Create data grid of sufficient size to hold binary tree strings.
+  let num_data_rows: usize = ((2 as i32).pow(tree_depth) - 1) as usize;
+  let num_data_cols: usize = (tree_depth*(tree_depth+1) / 2) as usize;
+  let mut data = vec![vec![' '; num_data_rows]; num_data_cols];
+  // Populate data grid.
   print_tree_rec(&root, 0, ((2 as i32).pow(depth(&root) - 1)  - 1) as usize, &mut data);
+  // Print out resulting data grid.
   for i in 0..data.len() {
     for j in 0..data[i].len() {
       print!("{}", data[i][j]);

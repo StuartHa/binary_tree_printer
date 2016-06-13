@@ -1,6 +1,6 @@
 extern crate binary_tree_visualizer;
 
-use binary_tree_visualizer::Node;
+use binary_tree_visualizer::node::Node;
 
 fn main() {
   let left_left_node = Node {left: None, right: None, value: 'd'};
