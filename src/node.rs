@@ -3,5 +3,3 @@ pub struct Node<'a> {
   pub right: Option<&'a Node<'a>>,
   pub value: char
 }
-
-
