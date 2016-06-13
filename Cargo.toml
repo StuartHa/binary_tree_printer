@@ -3,4 +3,8 @@ name = "binary_tree_visualizer"
 version = "0.1.0"
 authors = ["Stuart Harrell <skh076000@gmail.com>"]
 
+[lib]
+name = "binary_tree_visualizer"
+path = "src/binary_tree_visualizer.rs"
+
 [dependencies]
